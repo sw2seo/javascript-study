@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* box-shadow 문법:
+   box-shadow: 가로위치  세로위치  흐림정도  퍼짐정도  색상;
+                 ↓         ↓        ↓        ↓       ↓
+              x-offset  y-offset   blur    spread   color
+*/
+
+        /* 예제 1: 기본 그림자 */
+        .shadow-basic {
+            width: 250px;
+            height: 150px;
+            background: white;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            /*          ↑    ↑    ↑    ↑
+                      가로 5px 세로 5px 흐림 10px 20% 검정 */
+        }
+
+        /* 예제 2: 부드러운 그림자 (카드 디자인에 많이 씀) */
+        .shadow-soft {
+            width: 250px;
+            height: 150px;
+            background: white;
+            border-radius: 12px;
+            /* 둥근 모서리 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            /*          ↑   ↑    ↑    ↑
+        가로 0  세로 4px 흐림 15px 10% 검정
+        → 아래쪽으로 살짝 퍼지는 부드러운 그림자 */
+        }
+
+        /* 예제 3: 호버할 때 그림자 커지기 (인터랙션) */
+        .shadow-hover {
+            width: 250px;
+            height: 150px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* 평소 그림자 */
+            transition: box-shadow 0.3s ease;
+            /* 부드럽게 변하게! */
+        }
+
+        .shadow-hover:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            /* 마우스 올리면 그림자 커짐! */
+            /* → '떠오르는' 느낌이 남 */
+        }
+
+        /* 예제 4: 안쪽 그림자 (inset) */
+        .shadow-inset {
+            width: 250px;
+            height: 150px;
+            background: #f0f0f0;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* 'inset'을 붙이면 안쪽으로 그림자가 생김!
+        → 눌린 듯한/움푹 들어간 느낌 */
+        }
+
+        /* 예제 5: 여러 그림자 겹치기 (쉼표로 구분) */
+        .shadow-multiple {
+            width: 250px;
+            height: 150px;
+            background: white;
+            border-radius: 12px;
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.12),
+                /* 첫 번째 그림자: 가까운 그림자 */
+                0 4px 12px rgba(0, 0, 0, 0.08);
+            /* 두 번째 그림자: 먼 그림자 */
+            /* 여러 겹의 그림자를 겹치면 더 자연스러워요! */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shadow-basic"></div>
+    
+    <div class="shadow-soft"></div>
+
+    <div class="shadow-hover"></div>
+    
+    <div class="shadow-inset"></div>
+
+    <div class="shadow-multiple"></div>
+
+    
+</body>
+
+</html>

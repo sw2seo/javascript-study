@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>프로필 카드</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        .info { color: #666; margin: 8px 0; }
+        .skill-list { list-style: none; padding: 0; }
+        .skill-list li {
+            background: #e3f2fd;
+            margin: 5px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 id="name">이름을 바꿔주세요</h1>
+        <p class="info" id="age">나이: ??세</p>
+        <p class="info" id="goal">목표: 여기에 목표를 적어주세요</p>
+        <h2>보유 스킬</h2>
+        <ul class="skill-list">
+            <li class="skill">HTML</li>
+            <li class="skill">CSS</li>
+            <li class="skill">JavaScript 기초</li>
+        </ul>
+    </div>
+    <script src="profile.js"></script>
+</body>
+</html>

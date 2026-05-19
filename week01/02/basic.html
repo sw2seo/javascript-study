@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div> — 큰 상자 (블록 요소) -->
+
+    <!-- div는 '큰 상자'예요 — 한 줄을 통째로 차지해요 -->
+
+    <!-- 예시: 쇼핑몰 페이지를 영역별로 나누기 -->
+    <div>
+        <!-- 상단 영역 (로고, 메뉴) -->
+        <h1>홍길동의 쇼핑몰</h1>
+        <p>최고의 상품을 만나보세요!</p>
+    </div>
+
+    <div>
+        <!-- 상품 목록 영역 -->
+        <h2>인기 상품</h2>
+        <p>상품 1: 맛있는 과자</p>
+        <p>상품 2: 시원한 음료</p>
+    </div>
+
+    <div>
+        <!-- 하단 영역 (회사 정보) -->
+        <p>연락처: 010-1234-5678</p>
+        <p>주소: 서울시 어딘가</p>
+    </div>
+
+    <!-- <span> — 작은 표시 (인라인 요소) -->
+
+    <!-- span은 '형광펜'처럼 글자 일부에만 표시하는 거예요 -->
+    <!-- div와 달리 줄바꿈 없이 글자 옆에 붙어요 -->
+
+    <p>
+        오늘의 날씨는 <span>맑음</span>이고,
+        기온은 <span>25도</span>입니다.
+    </p>
+
+    <!-- 나중에 CSS로 이렇게 꾸밀 수 있어요 -->
+    <p>
+        이 문장에서 <span style="color: red;">중요한 부분</span>만
+        <span style="background-color: yellow;">강조</span>할 수 있어요.
+    </p>
+
+    <!-- 테이블(표)의 기본 구조 -->
+    <!-- table: 표 전체를 감싸는 태그 -->
+    <!-- tr: table row — 가로 한 줄 (행) -->
+    <!-- th: table header — 제목 칸 (굵은 글씨, 가운데 정렬) -->
+    <!-- td: table data — 일반 데이터 칸 -->
+
+    <table>
+        <!-- 첫 번째 줄: 제목 행 -->
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>취미</th>
+        </tr>
+
+        <!-- 두 번째 줄: 데이터 행 -->
+        <tr>
+            <td>홍길동</td>
+            <td>25</td>
+            <td>코딩</td>
+        </tr>
+
+        <!-- 세 번째 줄: 데이터 행 -->
+        <tr>
+            <td>김철수</td>
+            <td>30</td>
+            <td>독서</td>
+        </tr>
+
+    </table>
+
+    <!-- form: 입력 양식 전체를 감싸는 태그 -->
+    <form>
+
+        <!-- ① 한 줄 텍스트 입력 -->
+        <!-- input type="text" — 짧은 글자를 입력받는 칸 -->
+        <label>이름:</label>
+        <input type="text" placeholder="이름을 입력하세요">
+        <br><br>
+
+        <!-- ② 이메일 입력 -->
+        <!-- input type="email" — 이메일 형식(@)을 확인해줘요 -->
+        <label>이메일:</label>
+        <input type="email" placeholder="example@gmail.com">
+        <br><br>
+
+        <!-- ③ 비밀번호 입력 -->
+        <!-- input type="password" — 입력한 글자가 ●●●로 숨겨져요 -->
+        <label>비밀번호:</label>
+        <input type="password" placeholder="비밀번호를 입력하세요">
+        <br><br>
+
+        <!-- ④ 여러 줄 텍스트 입력 -->
+        <!-- textarea — 긴 글을 입력받을 때 (자기소개, 후기 등) -->
+        <label>자기소개:</label><br>
+        <textarea rows="4" cols="40" placeholder="자기소개를 작성해주세요"></textarea>
+        <br><br>
+
+        <!-- ⑤ 드롭다운 선택 -->
+        <!-- select — 여러 선택지 중 하나를 고르는 드롭다운 메뉴 -->
+        <label>관심 분야:</label>
+        <select>
+            <option value="">선택하세요</option>
+            <option value="frontend">프론트엔드</option>
+            <option value="backend">백엔드</option>
+            <option value="design">디자인</option>
+        </select>
+        <br><br>
+
+        <!-- ⑥ 버튼 -->
+        <!-- button — 클릭할 수 있는 버튼 -->
+        <button type="submit">가입하기</button>
+
+    </form>
+    
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!-- Google Fonts 사용법 — 2단계만 기억하세요! -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>웹폰트 예제</title>
+
+    <!-- ★ STEP 1: <head> 안에 Google Fonts 링크 넣기 -->
+    <!-- 'Noto Sans KR'은 구글이 만든 한글 폰트예요 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- 'Nanum Gothic'도 인기 있는 한글 폰트! -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet"> -->
+
+    <style>
+        @font-face {
+            font-family:'Sunflower';
+            src: url('../../font/Sunflower/Sunflower-Medium.ttf');
+        }
+        /* ★ STEP 2: CSS에서 font-family로 사용하기 */
+
+        /* 전체 페이지에 Noto Sans KR 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            /* 'Noto Sans KR' 폰트를 쓰되,
+                만약 못 쓰면 sans-serif(기본 고딕)로 대체 */
+        }
+
+        /* 특정 요소에만 다른 폰트 적용 */
+        .nanum-text {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        /* 폰트 굵기(weight) 활용 */
+        .light {
+            font-weight: 300;
+            /* 가는 글씨 */
+        }
+
+        .regular {
+            font-weight: 400;
+            /* 보통 글씨 */
+        }
+
+        .bold {
+            font-weight: 700;
+            /* 굵은 글씨 */
+        }
+
+        .sunflower-light {
+            font-family: "Sunflower", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Noto Sans KR 폰트</h1>
+    <p class="light">이것은 가는(Light, 300) 글씨예요</p>
+    <p class="regular">이것은 보통(Regular, 400) 글씨예요</p>
+    <p class="bold">이것은 굵은(Bold, 700) 글씨예요</p>
+
+    <h2 class="nanum-text">나눔고딕 폰트</h2>
+    <p class="nanum-text">이 문단은 나눔고딕으로 보여요!</p>
+
+    <p class="sunflower-light">이 문단은 나눔고딕으로 보여요!</p>
+</body>
+
+</html>

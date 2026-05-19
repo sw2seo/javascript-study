@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체페이지 반응형 레이아웃</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            /* 가운데정렬 코드로 대체해도 되는건가? 넓이가 고정되어있고 마진에 0 오토는 가운데정렬 이라고 외워도됨
+            넓이지정+margin 0 auto = 가운데정렬*/
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 22px;
+        }
+
+        header nav a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        header nav a:hover {
+            color: white;
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .content {
+            flex: 3;
+        }
+
+        .content article {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .content article h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            /* 기준축이 어딘지? */
+        }
+
+        .sidebar {
+            flex: 1;
+        }
+
+        .sidebar .widget {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            /* margin bottom을 늘렸을때 위에 사이드바와의 간격은 왜 안벌어지는건지? */
+        }
+
+        .sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            
+            header .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            header nav a {
+                margin: 0 10px;
+            }
+
+            .main-layout {
+                flex-direction: column;  
+            }
+
+            .sidebar {
+                order: 2;               
+            }
+
+            .content {
+                order: 1;               
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 18px;
+            }
+
+            header nav a {
+                font-size: 13px;
+                margin: 0 5px;
+            }
+
+            .content article {
+                padding: 20px;
+            }
+
+            .content article h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Blog</h1>
+            <nav>
+                <a href="#">홈</a>
+                <a href="#">글 목록</a>
+                <a href="#">소개</a>
+                <a href="#">연락처</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            <main class="content">
+                <article>
+                    <h2>반응형 웹을 배우고 있어요!</h2>
+                    <p>오늘은 미디어쿼리를 배워서 화면 크기에 따라 레이아웃이 바뀌는 웹페이지를 만들어봤어요.
+                       처음에는 어려워 보였지만, 패턴을 이해하니까 재밌어지네요.</p>
+                    <p>핵심은 Flexbox + 미디어쿼리 조합이에요!</p>
+                </article>
+                <article>
+                    <h2>CSS가 점점 재밌어지고 있어요</h2>
+                    <p>position으로 요소를 자유롭게 배치하고, box-shadow로 입체감을 주고,
+                       이제 반응형까지! 할 수 있는 게 점점 늘어나서 뿌듯해요.</p>
+                </article>
+            </main>
+
+            <aside class="sidebar">
+                <div class="widget">
+                    <h3>카테고리</h3>
+                    <ul>
+                        <li>HTML 기초</li>
+                        <li>CSS 기초</li>
+                        <li>CSS 심화</li>
+                        <li>반응형 웹</li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>최근 글</h3>
+                    <ul>
+                        <li>프로필 카드 만들기</li>
+                        <li>Flexbox 완벽 이해</li>
+                        <li>position 정리</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 My Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>

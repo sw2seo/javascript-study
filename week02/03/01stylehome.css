@@ -1,0 +1,39 @@
+.fixed-size {
+    width: 300px;
+}
+
+.percent-size {
+    width: 80%;
+}
+
+.viewport-size {
+    width: 50vw;
+    height: 100vh;
+}
+
+.rem-size {
+    font-size: 1.5rem;
+    padding: 2rem;
+}
+
+.responsive-box {
+    width: 100%;
+    max-width: 600px;
+}
+
+@media (조건) {
+
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+/* 컨테이너의 값만 720이 max이고 나머지는 768이 max인건가? */
+
+@media(min-width: 768px) and (max-width: 1024px) {
+    .sidebar {
+        display: none;
+    }
+}

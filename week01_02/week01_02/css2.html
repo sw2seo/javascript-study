@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 클래스 선택자: 점(.) + 클래스이름 */
+        /* 해당 이름표가 붙은 요소만 선택 */
+
+        .highlight {
+            /* "highlight라는 이름표가 붙은 요소들아, 노란 배경이 돼라!" */
+            background-color: yellow;
+        }
+
+        .important {
+            /* "important라는 이름표가 붙은 요소들아, 빨간색에 굵게!" */
+            color: red;
+            font-weight: bold;
+        }
+
+        /* ID 선택자: 샵(#) + ID이름 */
+        /* 해당 ID를 가진 딱 하나의 요소만 선택 */
+
+        #page-title {
+            /* "page-title이라는 ID를 가진 요소야, 네이비색이 돼라!" */
+            color: navy;
+            font-size: 36px;
+        }
+
+        #special-box {
+            background-color: lightblue;
+            padding: 20px;
+            /* 안쪽 여백 (나중에 자세히 배울 거예요) */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML에서 class 속성으로 이름표를 붙여요 -->
+    <p class="highlight">이 문단은 노란 배경</p> <!-- ✅ 노란 배경 -->
+    <p>이 문단은 평범</p> <!-- ❌ 변화 없음 -->
+    <p class="highlight">이것도 노란 배경</p> <!-- ✅ 노란 배경 -->
+    <p class="important">이건 빨간색 굵은 글씨</p> <!-- ✅ 빨간색, 굵게 -->
+
+    <!-- 하나의 요소에 여러 클래스를 붙일 수도 있어요! 띄어쓰기로 구분 -->
+    <p class="highlight important">노란 배경 + 빨간 굵은 글씨</p> <!-- ✅ 둘 다 적용 -->
+
+
+    <!-- HTML에서 id 속성으로 고유한 이름을 붙여요 -->
+    <h1 id="page-title">이 제목은 딱 하나!</h1> <!-- ✅ 네이비, 36px -->
+
+    <div id="special-box">
+        <p>이 상자는 하늘색 배경</p> <!-- ✅ 하늘색 배경 -->
+    </div>
+
+    <!-- ❌ 같은 id를 두 번 쓰면 안 돼요! -->
+    <!-- <h2 id="page-title">이러면 안 됩니다</h2> -->
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+/* ================================================ */
+/* style.css                                        */
+/* 홍길동 프로필 카드 - 완성 스타일시트                  */
+/* ================================================ */
+
+/* ================================================ */
+/* 0. 전체 초기화 (Reset)                             */
+/* 브라우저마다 기본 여백이 달라서, 먼저 통일시켜요       */
+/* ================================================ */
+* {
+    margin: 0;                 /* 모든 요소의 바깥 여백 제거 */
+    padding: 0;                /* 모든 요소의 안쪽 여백 제거 */
+    box-sizing: border-box;    /* padding, border를 width에 포함시키기 */
+    /* box-sizing 설명:
+       기본값은 content-box → width 200px + padding 20px = 실제 240px (헷갈림!)
+       border-box → width 200px 안에 padding이 포함됨 = 실제 200px (직관적!) */
+}
+
+/* ================================================ */
+/* 1. body 스타일 (페이지 전체 배경)                    */
+/* ================================================ */
+body {
+    /* 폰트 설정: Google Fonts에서 가져온 '노토 산스 KR' 사용 */
+    font-family: 'Noto Sans KR', sans-serif;
+
+    /* 배경 그라데이션(Gradient): 두 색이 자연스럽게 섞이는 효과 */
+    /* linear-gradient(방향, 시작색, 끝색) */
+    /* 135deg = 왼쪽 위에서 오른쪽 아래로 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* 배경이 화면 전체를 채우도록 최소 높이를 화면 높이(100vh)로 설정 */
+    min-height: 100vh;
+}
+
+/* ================================================ */
+/* 2. 컨테이너 — 카드를 화면 정중앙에 배치              */
+/* ================================================ */
+.container {
+    /* 화면 정중앙 배치 마법 3줄! (아까 배웠죠?) */
+    display: flex;              /* Flexbox 켜기 */
+    justify-content: center;    /* 가로 가운데 */
+    align-items: center;        /* 세로 가운데 */
+
+    /* 화면 전체 높이로 설정 (세로 가운데가 작동하려면 높이가 필요해요) */
+    min-height: 100vh;
+
+    /* 모바일에서 좌우 여백이 너무 좁지 않도록 패딩 추가 */
+    padding: 20px;
+}
+
+/* ================================================ */
+/* 3. 프로필 카드 본체                                 */
+/* ================================================ */
+.profile-card {
+    /* 배경색: 흰색 */
+    background: white;
+
+    /* 모서리 둥글게 (border-radius) */
+    /* 숫자가 클수록 더 둥글어요 */
+    border-radius: 20px;
+
+    /* 그림자 효과 (box-shadow) — 카드가 떠있는 느낌! */
+    /* box-shadow: 가로위치 세로위치 흐림정도 퍼짐정도 색상; */
+    /* rgba(0,0,0,0.15) = 검은색의 15% 투명도 */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+    /* 카드 안쪽 여백 */
+    padding: 40px;
+
+    /* 카드 가로 최대 너비 (너무 넓어지지 않도록) */
+    max-width: 380px;
+
+    /* 가로 폭을 100%로 (max-width까지만 늘어남) */
+    width: 100%;
+
+    /* 카드 안의 내용을 가운데 정렬 */
+    text-align: center;
+
+    /* 부드러운 움직임 효과 (hover 할 때 쓸 거예요) */
+    /* transition: 어떤속성 걸리는시간 움직임방식; */
+    transition: transform 0.3s ease;
+}
+
+/* 카드에 마우스를 올리면 (hover) 살짝 위로 올라가는 효과 */
+.profile-card:hover {
+    /* translateY(-10px) = Y축(세로)으로 -10px 이동 = 위로 10px */
+    transform: translateY(-10px);
+}
+
+/* ================================================ */
+/* 4. 프로필 이미지 영역                               */
+/* ================================================ */
+.profile-image {
+    /* 이미지 영역 아래쪽에 여백 추가 */
+    margin-bottom: 20px;
+}
+
+.avatar {
+    /* 동그란 원 만들기 */
+    width: 120px;               /* 가로 120px */
+    height: 120px;              /* 세로 120px */
+    border-radius: 50%;         /* 50%로 하면 완전한 원이 돼요! */
+
+    /* 배경 그라데이션 — 보라색에서 파란색으로 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* 원 안에서 이모지를 가운데 정렬 (Flexbox 활용!) */
+    display: flex;              /* Flexbox 켜기 */
+    justify-content: center;    /* 가로 가운데 */
+    align-items: center;        /* 세로 가운데 */
+
+    /* 이모지 크기 */
+    font-size: 50px;
+
+    /* 카드 안에서 이 원을 가로 가운데에 배치 */
+    /* margin: 0 auto → 위아래 0, 좌우 자동(=가운데) */
+    margin: 0 auto;
+
+    /* 그림자 효과 */
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+
+    /* hover 효과를 위한 transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 아바타에 마우스를 올리면 살짝 커지는 효과 */
+.avatar:hover {
+    /* scale(1.1) = 원래 크기의 1.1배 (10% 확대) */
+    transform: scale(1.1);
+    /* 그림자도 더 강하게 */
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+/* ================================================ */
+/* 5. 이름 스타일                                     */
+/* ================================================ */
+.name {
+    font-size: 28px;            /* 글자 크기 28px */
+    font-weight: 700;           /* 굵기: 700 (굵게) */
+    color: #2d3748;             /* 짙은 회색 (순수 검정보다 부드러워요) */
+    margin-bottom: 5px;         /* 아래쪽 여백 */
+
+    /* 글자 사이 간격 (자간) — 이름에 약간의 간격을 주면 고급스러워요 */
+    letter-spacing: 2px;
+}
+
+/* ================================================ */
+/* 6. 직함 스타일                                     */
+/* ================================================ */
+.title {
+    font-size: 14px;            /* 글자 크기 14px */
+    color: #667eea;             /* 보라색 — 포인트 컬러 */
+    font-weight: 500;           /* 약간 굵게 */
+    text-transform: uppercase;  /* 모든 영문을 대문자로 (WEB DEVELOPER) */
+    letter-spacing: 3px;        /* 자간 넓히기 */
+    margin-bottom: 20px;        /* 아래쪽 여백 */
+}
+
+/* ================================================ */
+/* 7. 구분선 스타일                                    */
+/* ================================================ */
+.divider {
+    border: none;               /* 기본 테두리 제거 */
+    height: 2px;                /* 선 두께 */
+    /* 구분선에도 그라데이션! */
+    background: linear-gradient(to right, transparent, #667eea, transparent);
+    margin: 0 30px 20px 30px;   /* 위0, 오른쪽30, 아래20, 왼쪽30 */
+}
+
+/* ================================================ */
+/* 8. 자기소개 텍스트                                  */
+/* ================================================ */
+.description {
+    font-size: 15px;            /* 글자 크기 */
+    color: #718096;             /* 중간 회색 */
+    line-height: 1.8;           /* 줄 간격 1.8배 (읽기 편하게) */
+    margin-bottom: 25px;        /* 아래쪽 여백 */
+    padding: 0 10px;            /* 좌우 안쪽 여백 */
+}
+
+/* ================================================ */
+/* 9. 기술 태그 영역                                   */
+/* ================================================ */
+.skills {
+    /* Flexbox로 태그들을 나란히 배치 */
+    display: flex;              /* Flexbox 켜기 */
+    justify-content: center;    /* 가로 가운데 */
+    flex-wrap: wrap;            /* 줄 바꿈 허용 (태그가 많으면 다음 줄로) */
+    gap: 10px;                  /* 태그 사이 간격 */
+    margin-bottom: 25px;        /* 아래쪽 여백 */
+}
+
+.skill-tag {
+    /* 태그 하나하나의 스타일 */
+    background-color: #ebf0ff;  /* 연한 보라색 배경 */
+    color: #667eea;             /* 보라색 글자 */
+    padding: 6px 16px;          /* 안쪽 여백: 위아래6, 좌우16 */
+    border-radius: 20px;        /* 둥근 모서리 (알약 모양) */
+    font-size: 13px;            /* 글자 크기 */
+    font-weight: 500;           /* 약간 굵게 */
+
+    /* hover 효과를 위한 transition */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* 기술 태그에 마우스를 올리면 색상 반전 */
+.skill-tag:hover {
+    background-color: #667eea;  /* 배경: 진한 보라색 */
+    color: white;               /* 글자: 흰색 */
+    transform: translateY(-2px); /* 살짝 위로 */
+}
+
+/* ================================================ */
+/* 10. SNS 버튼 영역                                  */
+/* ================================================ */
+.social-links {
+    /* Flexbox로 버튼들을 나란히 배치 */
+    display: flex;              /* Flexbox 켜기 */
+    justify-content: center;    /* 가로 가운데 */
+    gap: 12px;                  /* 버튼 사이 간격 */
+}
+
+.social-btn {
+    /* 링크의 기본 밑줄 제거 */
+    text-decoration: none;
+
+    /* 버튼 모양 만들기 */
+    padding: 10px 24px;         /* 안쪽 여백 */
+    border-radius: 25px;        /* 둥근 모서리 (알약 모양) */
+    font-size: 13px;            /* 글자 크기 */
+    font-weight: 600;           /* 좀 더 굵게 */
+    color: white;               /* 흰색 글자 */
+
+    /* hover 효과를 위한 부드러운 전환 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 각 버튼마다 다른 색상 */
+.social-btn.github {
+    /* GitHub 버튼: 어두운 색 */
+    background: linear-gradient(135deg, #333333, #555555);
+}
+
+.social-btn.email {
+    /* Email 버튼: 보라색 그라데이션 */
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.social-btn.blog {
+    /* Blog 버튼: 초록색 그라데이션 */
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+/* 모든 SNS 버튼 공통 hover 효과 */
+.social-btn:hover {
+    /* 살짝 위로 + 그림자 추가 */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================ */
+/* 보너스: 카드가 처음 나타날 때 애니메이션              */
+/* ================================================ */
+
+/* @keyframes: 애니메이션 동작을 정의하는 규칙 */
+/* "fadeInUp"이라는 이름의 애니메이션을 만들어요 */
+@keyframes fadeInUp {
+    /* from: 시작 상태 */
+    from {
+        opacity: 0;                     /* 완전 투명 */
+        transform: translateY(30px);    /* 아래에서 30px 위치 */
+    }
+    /* to: 끝 상태 */
+    to {
+        opacity: 1;                     /* 완전 불투명 */
+        transform: translateY(0);       /* 원래 위치 */
+    }
+}
+
+/* 카드에 애니메이션 적용 */
+.profile-card {
+    /* animation: 이름 시간 방식; */
+    animation: fadeInUp 0.8s ease;
+}

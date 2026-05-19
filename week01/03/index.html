@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>홍길동 이력서</title>
+
+  <!-- CSS 파일 연결! (외부 스타일 방식) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. 헤더 영역 — 이름과 한줄 소개 -->
+  <header id="top-header">
+    <h1>홍길동</h1>
+    <p class="subtitle">프론트엔드 개발자를 꿈꾸는 초보 개발자</p>
+  </header>
+
+  <!-- 2. 네비게이션 — 페이지 내 이동 메뉴 -->
+  <nav>
+    <a href="#about">소개</a> |
+    <a href="#skills">기술 스택</a> |
+    <a href="#education">학력</a> |
+    <a href="#contact">연락처</a>
+  </nav>
+
+  <!-- 3. 메인 콘텐츠 -->
+  <main>
+
+    <!-- 자기소개 섹션 -->
+    <section id="about">
+      <h2>자기소개</h2>
+      <p>
+        안녕하세요! 웹 개발에 관심이 많은 <span class="highlight">홍길동</span>입니다.
+        현재 HTML, CSS를 열심히 배우고 있으며,
+        <span class="highlight">나만의 웹사이트</span>를 만드는 것이 목표입니다.
+      </p>
+    </section>
+
+    <!-- 기술 스택 섹션 -->
+    <section id="skills">
+      <h2>기술 스택</h2>
+      <table>
+        <tr>
+          <th>기술</th>
+          <th>수준</th>
+          <th>학습 상태</th>
+        </tr>
+        <tr>
+          <td>HTML</td>
+          <td>입문</td>
+          <td class="learning">학습 중</td>
+        </tr>
+        <tr>
+          <td>CSS</td>
+          <td>입문</td>
+          <td class="learning">학습 중</td>
+        </tr>
+        <tr>
+          <td>JavaScript</td>
+          <td>-</td>
+          <td class="planned">예정</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 학력 섹션 -->
+    <section id="education">
+      <h2>학력</h2>
+      <ul>
+        <li>OO대학교 졸업 (또는 재학 중)</li>
+        <li>웹 개발 부트캠프 수강 중</li>
+      </ul>
+    </section>
+
+    <!-- 연락처 섹션 -->
+    <section id="contact">
+      <h2>연락처</h2>
+      <form>
+        <p>
+          <label>이름:</label><br>
+          <input type="text" placeholder="이름을 입력하세요" class="input-field">
+        </p>
+        <p>
+          <label>이메일:</label><br>
+          <input type="email" placeholder="이메일을 입력하세요" class="input-field">
+        </p>
+        <p>
+          <label>메시지:</label><br>
+          <textarea rows="4" cols="40" placeholder="메시지를 입력하세요" class="input-field"></textarea>
+        </p>
+        <button type="submit" class="btn">보내기</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- 4. 푸터 -->
+  <footer>
+    <p>&copy; 2026 홍길동. 웹 개발 공부 중입니다!</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 페이지</title>
+</head>
+
+<body>
+    <!-- javascript 제어 -->
+    <h1 id="main-title">환영합니다!</h1>
+    <p id="intro">이것은 소개글 입니다.</p>
+    <p class="info">첫 번째 정보</p>
+    <p class="info">두 번째 정보</p>
+    <div class="box">
+        <span>안의 내용</span>
+    </div>
+
+
+    <ul>
+        <li class="item"><p>사과</p>메론</li>
+        <li class="item">바나나</li>
+        <li class="item">딸기</li>
+    </ul>
+
+
+    <!-- query(질문하다) + Selector(선택자) : 선택자로 질문해서 찾아줘라 -->
+    <script>
+        // html을 제어하는 중요한 함수 3가지
+        // getElementById("id") : id로 찾기 / 요소 1개 - id만 지칭해서 하나만 가지고오고싶을때(명확한표현) 
+        // querySelector("선택자") : CSS 선택자로 찾기 / 첫번재 1개
+        // querySelectorAll("선택자") : CSS 선택자로 찾기 // 전부(Node List)
+        let title = document.getElementById("main-title");
+        let intro = document.getElementById("intro");
+        console.log(title);
+        console.log(intro);
+
+        title = document.querySelector("#main-title");
+        console.log(title);
+
+        let firstIntro = document.querySelector(".info");
+        console.log(firstIntro);
+
+        let paragragh = document.querySelector("p")
+        console.log(paragragh);
+
+        let innerSpan = document.querySelector(".box span");
+        console.log(innerSpan);
+
+        let items = document.querySelectorAll(".item")
+        console.log(items);
+        console.log(items.length);
+        console.log(items[0]);
+        console.log(items[1]);
+        console.log(items[2]);
+
+        for (let i = 0; i < items.length; i++) {
+            console.log(items[i].textContent);
+        }
+
+        items.forEach(function(item) {
+            console.log(item.textContent);
+        });
+    </script>
+
+
+    <!-- DOM (Document Object Model) 문서 객체 모델 -->
+    <!-- HTML을 나무(tree) 모양으로 정리한것을 의미함 -->
+    <!-- javascript가 이 나무의 각각 가지/잎을 찾아서 바꿀 수 있게 해주는것 -->
+    <h1>안녕하세요</h1>
+    <p>반갑습니다</p>
+    <!-- 
+                    document
+                       |
+                     <html>
+                    /      \
+               <head>      <body>
+                 |         /     \
+              <title>   <h1>    <p>
+                 |        |       |
+             "내 페이지" "안녕하세요" "반갑습니다" -->
+
+    <!-- DOM : Document Object Model -->
+    <!-- 노드(Node) : DOM 나무의 각 가지/잎 하나하나를 의미 -->
+    <!-- 요소(Element) : HTML 태그로 만들어진 노드 -->
+    <!-- 부모(Parent Node): 위쪽에 있는 노드 -->
+    <!-- 자식(Child Node) : 아래쪽에 있는 노드 -->
+</body>
+
+</html>

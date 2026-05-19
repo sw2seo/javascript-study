@@ -1,0 +1,79 @@
+<!-- index.html -->
+<!-- 프로필 카드 프로젝트 - HTML 구조 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- 문서 기본 설정 -->
+    <meta charset="UTF-8">
+    <!-- 반응형을 위한 뷰포트 설정 (모바일에서도 잘 보이게) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 브라우저 탭에 표시될 제목 -->
+    <title>홍길동 프로필 카드</title>
+    <!-- 외부 CSS 파일 연결 (style.css를 불러와요) -->
+    <link rel="stylesheet" href="03_style.css">
+    <!-- Google Fonts에서 예쁜 한글 폰트 가져오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- ============================================ -->
+    <!-- 전체를 감싸는 컨테이너                         -->
+    <!-- 카드를 화면 정중앙에 배치하기 위한 wrapper       -->
+    <!-- ============================================ -->
+    <div class="container">
+
+        <!-- ======================================== -->
+        <!-- 프로필 카드 시작                           -->
+        <!-- ======================================== -->
+        <div class="profile-card">
+
+            <!-- 1. 프로필 이미지 영역 -->
+            <!-- 실제 사진 대신 이모지로 대체 (나중에 진짜 사진으로 바꿀 수 있어요) -->
+            <div class="profile-image">
+                <div class="avatar">👨‍💻</div>
+            </div>
+
+            <!-- 2. 이름과 직함 -->
+            <h1 class="name">홍길동</h1>
+            <p class="title">Web Developer</p>
+
+            <!-- 3. 구분선 -->
+            <!-- hr 태그: 가로 구분선을 그어주는 태그 -->
+            <hr class="divider">
+
+            <!-- 4. 자기소개 -->
+            <p class="description">
+                안녕하세요! 개발자를 꿈꾸는 홍길동입니다.
+                <br>
+                매일 한 걸음씩 성장하고 있습니다.
+            </p>
+
+            <!-- 5. 기술 태그 영역 -->
+            <!-- 배운 기술들을 태그처럼 표시 -->
+            <div class="skills">
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">VS Code</span>
+            </div>
+
+            <!-- 6. SNS / 연락처 버튼 영역 -->
+            <div class="social-links">
+                <!-- a 태그: 링크를 만드는 태그 -->
+                <!-- href="#": 아직 실제 주소가 없으니 #으로 (나중에 진짜 URL 넣으면 돼요) -->
+                <!-- target="_blank": 새 탭에서 열기 -->
+                <a href="#" class="social-btn github">GitHub</a>
+                <a href="#" class="social-btn email">Email</a>
+                <a href="#" class="social-btn blog">Blog</a>
+            </div>
+
+        </div>
+        <!-- 프로필 카드 끝 -->
+
+    </div>
+     <!-- 전체 컨테이너 끝 -->
+</body>
+
+</html>

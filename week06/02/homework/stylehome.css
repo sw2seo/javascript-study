@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+    background-color: #e2e7c1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px;
+}
+
+.container {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+/* 제목 */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+/* 입력영역 */
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px
+}
+
+#todo-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#todo-input:focus {
+    border-color: #e6b122;
+}
+
+#add-btn {
+    padding: 12px 24px;
+    background-color: #e9a91e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-btn:hover {
+    background-color: #ff9100;
+}
+
+/* 할일 목록 */
+#todo-list {
+    list-style: none;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s;
+}
+
+.todo-item:hover {
+    background-color: #f9f9f9;
+}
+
+.todo-text {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* 완료된 항목 */
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* 삭제버튼 */
+.delete-btn {
+    padding: 6px 12px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #ff1744;
+}
+
+/* 정보영역 */
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0 0;
+    margin-top: 15px;
+    border-top: 2px solid #eee;
+    color: #888;
+    font-size: 14px;
+}
+
+/* 목록이 비었을때 안내메시지 */
+.empty-message {
+    text-align: center;
+    color: #bbb;
+    padding: 30px 0;
+    font-size: 15px;
+}

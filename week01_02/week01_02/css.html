@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- 방법 2: head 안에 <style> 태그로 묶어서 쓰기 -->
+    <!-- 한 파일 안에서 스타일을 모아서 관리할 수 있어요 -->
+    <!-- 내부스타일 -->
+    <style>
+        /*
+            CSS의 기본 문법:
+
+            선택자 {
+                속성: 값;
+                속성: 값;
+            }
+        */
+        .yellow-text {
+            color: yellow;
+        }
+
+        h1 {
+            color: blue;
+            /* 제목 글자색: 파랑 */
+        }
+
+        p {
+            color: green;
+            /* 문단 글자색: 초록 */
+            font-size: 18px;
+            /* 문단 글자 크기: 18픽셀 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 방법 1: 인라인 스타일 (Inline Style) — 태그에 직접 -->
+
+    <!-- 방법 1: style 속성을 태그에 직접 쓰기 -->
+    <!-- 간단하지만 태그마다 일일이 써야 해서 비효율적 -->
+
+    <h1 style="color: blue;">파란색 제목</h1>
+    <h1 class="yellow-text">노란색 제목</h1>
+    <p style="color: red; font-size: 20px;">빨간색 큰 글씨</p>
+    <p style="color:brown; background-color: yellow;">노란 배경</p>
+</body>
+
+</html>

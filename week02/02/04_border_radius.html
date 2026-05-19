@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* border-radius 심화 예제 */
+
+        /* 1. 완전한 원 — 정사각형 + 50% */
+        .circle {
+            width: 100px;
+            height: 100px;
+            /* 정사각형이어야 해요! */
+            background-color: #3498db;
+            border-radius: 50%;
+            /* 50% = 완전한 원! */
+        }
+
+        /* 2. 타원 — 직사각형 + 50% */
+        .oval {
+            width: 200px;
+            height: 100px;
+            /* 직사각형 */
+            background-color: #e74c3c;
+            border-radius: 50%;
+            /* 50%지만 직사각형이라 타원이 됨 */
+        }
+
+        /* 3. 각 모서리 따로 설정 */
+        .custom-corners {
+            width: 200px;
+            height: 150px;
+            background-color: #2ecc71;
+            border-radius: 20px 5px 30px 10px;
+            /* 왼쪽 위  오른쪽 위  오른쪽 아래  왼쪽 아래
+       시계방향으로 돌아가요! (margin, padding이랑 같은 순서) */
+        }
+
+        /* 4. 말풍선 모양 — 한쪽만 둥글게 */
+        .speech-bubble {
+            width: 200px;
+            padding: 20px;
+            background-color: #f39c12;
+            color: white;
+            border-radius: 20px 20px 20px 0;
+            /* 왼쪽 아래만 각진 모양 → 말풍선처럼 보임! */
+        }
+
+        /* 5. 알약 모양 — 높이의 반만큼 */
+        .pill {
+            display: inline-block;
+            /* 내용 크기에 맞추기 */
+            padding: 10px 25px;
+            /* 좌우를 넉넉하게 */
+            background-color: #9b59b6;
+            color: white;
+            border-radius: 100px;
+            /* 아주 큰 값 → 알약/캡슐 모양 */
+            /* 999px처럼 큰 값을 주면 자동으로 가능한 최대만큼 둥글어져요 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle"></div>
+
+    <div class="oval"></div>
+
+    <div class="custom-corners"></div>
+
+    <div class="speech-bubble"></div>
+
+    <div class="pill">메뉴1</div>
+</body>
+
+</html>

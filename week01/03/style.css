@@ -1,0 +1,114 @@
+/* ============================================ */
+/* style.css — 홍길동 이력서 스타일              */
+/* ============================================ */
+
+/* 📌 전체 페이지 기본 설정 */
+body {
+  font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;  /* 한글 글꼴 */
+  font-size: 16px;          /* 기본 글자 크기 */
+  color: #333333;           /* 기본 글자색 (짙은 회색 — 순수 검정보다 눈이 편해요) */
+  background-color: #f5f5f5; /* 배경색 (아주 연한 회색) */
+  width: 700px;             /* 페이지 너비 고정 */
+  margin: 0 auto;           /* 가운데 정렬 (나중에 자세히 배울 거예요) */
+}
+
+/* 📌 헤더 (맨 위 이름/소개 영역) #은 id 페이지에 하나만 쓸수있음 */
+#top-header {
+  text-align: center;               /* 가운데 정렬 */
+  background-color: #2c3e50;        /* 어두운 남색 배경 */
+  color: white;                     /* 흰색 글자 */
+  padding: 30px;                    /* 안쪽 여백 (글자와 테두리 사이 간격) */
+}
+
+#top-header h1 {
+  font-size: 36px;                  /* 이름 크기 크게 */
+}
+
+.subtitle {
+  font-size: 18px;                  /* 부제목 크기 .은 class 한곳에 여러개 쓸수있음 반복되는 디자인에 씀 */
+  color: #bdc3c7;                   /* 연한 회색 (흰색보다 살짝 어둡게) */
+}
+
+/* 📌 네비게이션 (메뉴 영역) */
+nav {
+  text-align: center;               /* 가운데 정렬 */
+  background-color: #34495e;        /* 좀 더 밝은 남색 */
+  padding: 10px;                    /* 안쪽 여백 */
+}
+
+nav a {
+  color: white;                     /* 링크 글자색: 흰색 */
+  text-decoration: none;            /* 밑줄 제거 */
+  font-size: 16px;                  /* 글자 크기 */
+}
+
+/* 📌 섹션 (각 내용 영역) */
+section {
+  background-color: white;          /* 흰색 배경 */
+  padding: 20px;                    /* 안쪽 여백 */
+  margin: 20px 0;                   /* 위아래 바깥 여백 (섹션 사이 간격) */
+}
+
+section h2 {
+  color: #2c3e50;                   /* 섹션 제목 색상 */
+  font-size: 24px;                  /* 섹션 제목 크기 */
+}
+
+/* 📌 하이라이트 (형광펜 효과) */
+.highlight {
+  background-color: #fff3cd;        /* 연한 노란색 배경 */
+  font-weight: bold;                /* 굵게 */
+  padding: 2px 5px;                 /* 아주 작은 안쪽 여백 */
+}
+
+/* 📌 테이블 (표) */
+table {
+  width: 100%;                      /* 섹션 너비에 맞추기 */
+  text-align: center;               /* 글자 가운데 정렬 */
+}
+
+th {
+  background-color: #2c3e50;        /* 제목 행 배경: 남색 */
+  color: white;                     /* 제목 행 글자: 흰색 */
+  padding: 10px;                    /* 안쪽 여백 */
+}
+
+td {
+  padding: 10px;                    /* 안쪽 여백 */
+  background-color: #ecf0f1;        /* 연한 회색 배경 */
+}
+
+.learning {
+  color: #27ae60;                   /* 학습 중: 초록색 */
+  font-weight: bold;
+}
+
+.planned {
+  color: #e67e22;                   /* 예정: 주황색 */
+  font-weight: bold;
+}
+
+/* 📌 입력 필드 (input, textarea) */
+.input-field {
+  width: 100%;                      /* 부모 요소 너비에 맞추기 */
+  font-size: 14px;                  /* 입력 글자 크기 */
+  padding: 8px;                     /* 안쪽 여백 */
+}
+
+/* 📌 버튼 */
+.btn {
+  background-color: #2c3e50;        /* 버튼 배경: 남색 */
+  color: white;                     /* 버튼 글자: 흰색 */
+  font-size: 16px;                  /* 글자 크기 */
+  padding: 10px 30px;               /* 안쪽 여백 (위아래 10px, 좌우 30px) */
+  font-weight: bold;                /* 굵은 글씨 */
+}
+
+/* 📌 푸터 (맨 아래 영역) */
+footer {
+  text-align: center;               /* 가운데 정렬 */
+  background-color: #2c3e50;        /* 남색 배경 */
+  color: #bdc3c7;                   /* 연한 회색 글자 */
+  padding: 15px;                    /* 안쪽 여백 */
+  font-size: 14px;                  /* 작은 글씨 */
+}

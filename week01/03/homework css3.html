@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block-box {
+            display: block;
+            width: 200px;
+            height: 50px;
+            background-color: #ff6b6b;
+            margin: 5px;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .inline-box {
+            display: inline;
+            background-color: #4ecdc4;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        .inline-block-box {
+            display: 150px;
+            width: 150px;
+            height: 50px;
+            background-color: #45b7d1;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>1. block (자동차-한줄 독점)</h2>
+    <div class="block-box">블록 1</div>
+    <div class="block-box">블록 2</div>
+    <div class="block-box">블록 3</div>
+
+    <h2>2. inline (오토바이 - 나란히)</h2>
+    <span class="inline-box">인라인 1</span>
+    <span class="inline-box">인라인 2</span>
+    <span class="inline-box">인라인 3</span>
+
+    <h2>3. inline-block (미니카 - 나란히 + 크기조절)</h2>
+    <div class="inline-block-box">인라인블록 1</div>
+    <div class="inline-block-box">인라인블록 2</div>
+    <div class="inline-block-box">인라인블록 3</div>    
+</body>
+</html>

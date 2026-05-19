@@ -1,0 +1,64 @@
+<!-- 이미지 위에 텍스트 올리기 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 위에 텍스트</title>
+    <style>
+        /* 카드 컨테이너 — absolute의 기준이 되는 부모 */
+        .image-card {
+            position: relative;       /* ★ 부모: relative */
+            width: 400px;             /* 가로 400px */
+            height: 300px;            /* 세로 300px */
+            border-radius: 12px;      /* 둥근 모서리 */
+            overflow: hidden;         /* 넘치는 부분 숨기기 (나중에 자세히 배워요) */
+        }
+
+        /* 카드 안의 이미지 */
+        .image-card img {
+            width: 100%;              /* 카드 가로에 맞추기 */
+            height: 100%;             /* 카드 세로에 맞추기 */
+            object-fit: cover;        /* 비율 유지하면서 꽉 채우기 */
+        }
+
+        /* 이미지 위에 올라갈 텍스트 영역 */
+        /* 선택지에 띄어쓰기가 있으면 하위요소를 나타냄 */
+        .image-card .overlay-text {
+            position: absolute;       /* ★ 자식: absolute → 부모 기준으로 배치 */
+            bottom: 0;                /* 하단에 배치 */
+            left: 0;                  /* 왼쪽 끝부터 */
+            right: 0;                 /* 오른쪽 끝까지 (= 가로 100%) */
+            padding: 20px;            /* 안쪽 여백 */
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+                                      /* 위는 투명, 아래는 반투명 검정 — 그라데이션! */
+            color: white;             /* 흰색 글자 */
+            z-index: 2;               /* 이미지 위에 보이도록 */
+        }
+
+        /* 오버레이 안의 제목 */
+        .overlay-text h3 {
+            margin: 0;                /* 기본 여백 제거 */
+            font-size: 20px;          /* 글자 크기 */
+        }
+
+        /* 오버레이 안의 설명 */
+        .overlay-text p {
+            margin: 5px 0 0;          /* 위쪽만 여백 */
+            font-size: 14px;          /* 작은 글자 */
+            opacity: 0.9;             /* 약간 투명 */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-card">
+        <!-- 임시 이미지 (picsum.photos는 무료 임시 이미지 사이트) -->
+        <img src="https://picsum.photos/400/300" alt="풍경 사진">
+
+        <!-- 이미지 위에 올라가는 텍스트 -->
+        <div class="overlay-text">
+            <h3>아름다운 풍경</h3>
+            <p>position: absolute로 이미지 위에 텍스트를 올렸어요!</p>
+        </div>
+    </div>
+</body>
+</html>

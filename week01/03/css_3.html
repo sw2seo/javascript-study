@@ -1,0 +1,58 @@
+<!-- display.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>display 속성 실습</title>
+    <style>
+        /* block 요소: 한 줄을 통째로 차지 */
+        .block-box {
+            display: block;            /* 블록: 한 줄 독점 */
+            width: 200px;              /* 가로 200px */
+            height: 50px;              /* 세로 50px */
+            background-color: #ff6b6b; /* 빨간 배경 */
+            margin: 5px;               /* 바깥 여백 */
+            color: white;              /* 흰색 글자 */
+            text-align: center;        /* 글자 가운데 정렬 */
+            line-height: 50px;         /* 세로 가운데 정렬 (높이와 같은 값) */
+        }
+
+        /* inline 요소: 내용만큼만, 나란히 배치 */
+        .inline-box {
+            display: inline;           /* 인라인: 나란히 배치 */
+            background-color: #4ecdc4; /* 초록 배경 */
+            color: white;              /* 흰색 글자 */
+            padding: 5px 10px;         /* 안쪽 여백 */
+            /* 주의: width, height가 적용되지 않아요! */
+        }
+
+        /* inline-block 요소: 나란히 + 크기 조절 가능 */
+        .inline-block-box {
+            display: inline-block;     /* 인라인 블록: 나란히 + 크기 조절 */
+            width: 150px;              /* 가로 150px — 적용됨! */
+            height: 50px;              /* 세로 50px — 적용됨! */
+            background-color: #45b7d1; /* 파란 배경 */
+            color: white;              /* 흰색 글자 */
+            text-align: center;        /* 글자 가운데 */
+            line-height: 50px;         /* 세로 가운데 */
+            margin: 5px;               /* 바깥 여백 */
+        }
+    </style>
+</head>
+<body>
+    <h2>1. block (자동차 — 한 줄 독점)</h2>
+    <div class="block-box">블록 1</div>
+    <div class="block-box">블록 2</div>
+    <div class="block-box">블록 3</div>
+
+    <h2>2. inline (오토바이 — 나란히)</h2>
+    <span class="inline-box">인라인 1</span>
+    <span class="inline-box">인라인 2</span>
+    <span class="inline-box">인라인 3</span>
+
+    <h2>3. inline-block (미니카 — 나란히 + 크기 조절)</h2>
+    <div class="inline-block-box">인라인블록 1</div>
+    <div class="inline-block-box">인라인블록 2</div>
+    <div class="inline-block-box">인라인블록 3</div>
+</body>
+</html>

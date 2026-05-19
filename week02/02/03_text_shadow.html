@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* text-shadow 문법:
+   text-shadow: 가로  세로  흐림정도  색상; */
+
+        /* 기본 글자 그림자 */
+        .text-glow {
+            font-size: 36px;
+            /* 큰 글자 */
+            color: #2c3e50;
+            /* 어두운 글자색 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /*           ↑    ↑    ↑    ↑
+        가로 2px 세로 2px 흐림 4px 30% 검정 */
+        }
+
+        /* 네온 효과 (빛나는 느낌) */
+        .text-neon {
+            font-size: 48px;
+            color: #fff;
+            /* 흰색 글자 */
+            text-shadow:
+                0 0 10px #00f,
+                /* 파란 빛 근처 */
+                0 0 20px #00f,
+                /* 파란 빛 중간 */
+                0 0 40px #00f;
+            /* 파란 빛 멀리 */
+        }
+
+        /* 볼록한 느낌의 글자 */
+        .text-emboss {
+            font-size: 36px;
+            color: #ccc;
+            text-shadow: 1px 1px 0 #fff,
+                /* 밝은 그림자 (하이라이트) */
+                -1px -1px 0 #999;
+            /* 어두운 그림자 (그늘) */
+        }
+    </style>
+</head>
+
+<body>
+    <label class="text-glow">안녕하세요</label>
+
+    <label class="text-neon">안녕하세요</label>
+
+    <label class="text-emboss">안녕하세요</label>
+</body>
+
+</html>

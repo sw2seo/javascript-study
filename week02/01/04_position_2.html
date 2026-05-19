@@ -1,0 +1,129 @@
+<!-- position: absolute 예제 HTML -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>absolute 예제</title>
+    <style>
+        /* 화면 상단에 고정되는 네비게이션 바 */
+        .navbar {
+            position: fixed;
+            /* 화면에 고정! */
+            top: 0;
+            /* 화면 맨 위에 */
+            left: 0;
+            /* 화면 맨 왼쪽부터 */
+            width: 100%;
+            /* 가로 꽉 채우기 */
+            height: 60px;
+            /* 높이 60px */
+            background-color: #2c3e50;
+            /* 어두운 남색 배경 */
+            color: white;
+            /* 흰색 글자 */
+            display: flex;
+            /* Flexbox로 내부 요소 배치 */
+            align-items: center;
+            /* 세로 가운데 정렬 */
+            padding: 0 20px;
+            /* 좌우 여백 */
+            z-index: 1000;
+            /* 다른 요소 위에 표시 (나중에 배워요!) */
+        }
+
+        /* "맨 위로" 버튼 — 화면 오른쪽 하단 고정 */
+        .scroll-top-btn {
+            position: fixed;
+            /* 화면에 고정! */
+            bottom: 30px;
+            /* 화면 아래에서 30px 위 */
+            right: 30px;
+            /* 화면 오른쪽에서 30px 안쪽 */
+            width: 50px;
+            /* 버튼 크기 50x50 */
+            height: 50px;
+            background-color: #3498db;
+            /* 파란색 */
+            color: white;
+            /* 흰색 글자 */
+            border-radius: 50%;
+            /* 완전한 원형! */
+            text-align: center;
+            /* 글자 가운데 */
+            line-height: 50px;
+            /* 글자 세로 가운데 */
+            cursor: pointer;
+            /* 마우스 올리면 손가락 모양 */
+        }
+
+        /* sticky 네비게이션 */
+        .sticky-nav {
+            position: sticky;
+            /* 끈끈이 위치! */
+            top: 500;
+            /* 화면 상단에 도달하면 고정 */
+            background-color: white;
+            /* 흰색 배경 */
+            padding: 15px;
+            /* 안쪽 여백 */
+            border-bottom: 2px solid #eee;
+            /* 아래쪽 선 */
+            z-index: 100;
+            /* 다른 요소 위에 표시 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        부모 영역
+        <div>
+            <div class="child-absolute">자식</div>
+        </div>
+    </div>
+    <!--<div class="navbar">
+        <div>메뉴1</div>
+        <div>메뉴2</div>
+    </div>!-->
+
+    <div class="scroll-top-btn"></div>
+    <div class="sticky-nav"></div>
+    <div>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+        <h1>안녕하세요</h1>
+    </div>
+</body>
+
+</html>

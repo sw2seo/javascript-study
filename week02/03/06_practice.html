@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 연습 문제 1: 미디어쿼리로 글자 크기 바꾸기
+        문제: 화면 크기에 따라 제목(<h1>)의 글자 크기가 달라지는 페이지를 만들어보세요.
+        데스크탑(1024px 이상): 48px
+        태블릿(768px~1023px): 36px
+        모바일(767px 이하): 24px */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 36px;
+                color: #2ecc71;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 48px;
+                color: #f39c12;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</h1>
+</body>
+
+</html>

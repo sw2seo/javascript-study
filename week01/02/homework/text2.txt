@@ -1,0 +1,105 @@
+[과제] 나만의 프로필 페이지 만들기 (HTML + CSS 선택자)
+
+오늘 배운 HTML 심화 태그와 CSS 선택자를 활용해서
+본인 프로필 페이지를 만들어보세요!
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+[필수 포함 요소]
+
+1. 시맨틱 태그로 구조 잡기 (header, main, footer)
+2. 테이블(table)로 기본 정보 표 만들기
+3. 폼(form)에 input 태그 최소 3개 사용하기
+4. CSS를 외부 파일(.css)로 분리해서 연결하기
+5. 클래스 선택자를 최소 2개 이상 사용하기
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+[이렇게 풀어보세요! - 풀이 방향 가이드]
+
+■ STEP 1: 폴더와 파일 만들기
+- 폴더를 하나 만들고 그 안에 파일 2개를 만듭니다.
+  index.html
+  style.css
+
+■ STEP 2: HTML 뼈대 만들기
+- index.html에 기본 구조를 작성합니다.
+  <!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>서상원 프로필</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    여기에 내용을 넣으세요
+  </body>
+  </html>
+
+■ STEP 3: 시맨틱 태그로 영역 나누기
+- body 안에 header, main, footer를 넣어줍니다.
+  <header>
+    <h1>서상원 프로필</h1>
+  </header>
+  <main>
+    여기에 본문 내용
+  </main>
+  <footer>
+    <p>만든 사람: 서상원</p>
+  </footer>
+
+■ STEP 4: main 안에 테이블로 기본 정보 넣기
+- 이름, 나이, 사는곳, 취미 등을 표로 만들어보세요.
+  <table>
+    <tr>
+      <th>항목</th>
+      <th>내용</th>
+    </tr>
+    <tr>
+      <td>이름</td>
+      <td>서상원</td>
+    </tr>
+  </table>
+
+■ STEP 5: form으로 방명록 만들기
+- main 아래쪽에 간단한 입력 폼을 넣어봅니다.
+  <h2>방명록</h2>
+  <form>
+    <label>이름:</label>
+    <input type="text" placeholder="이름을 입력하세요">
+    <br><br>
+    <label>한마디:</label>
+    <input type="text" placeholder="한마디 남겨주세요">
+    <br><br>
+    <input type="submit" value="등록">
+  </form>
+
+■ STEP 6: CSS로 꾸미기 (style.css)
+- 태그 선택자, 클래스 선택자를 사용해봅니다.
+  h1 {
+    color: navy;
+  }
+  .info-table {
+    border: 1px solid black;
+  }
+  .section-title {
+    color: darkgreen;
+  }
+- HTML에서 class를 붙이는 것도 잊지 마세요!
+  <table class="info-table">
+  <h2 class="section-title">기본 정보</h2>
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+[TIP]
+
+- CSS 파일은 꼭 head 안에 link 태그로 연결해야 합니다.
+- class 이름은 영어로, 의미가 드러나게 지으면 좋습니다.
+  (예: .title, .info-table, .guestbook)
+- table에 테두리가 안 보이면 CSS에서 border를 추가해보세요.
+- 수업 정리 파일 보면서 해도 전혀 문제없어요!
+- 완벽하지 않아도 괜찮습니다. 직접 써보는 게 핵심이에요.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+막히면 카톡으로 스크린샷 보내주세요! 바로 피드백 드릴게요.

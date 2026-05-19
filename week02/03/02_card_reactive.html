@@ -1,0 +1,151 @@
+<!-- 반응형 카드 레이아웃 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 카드 레이아웃</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* === 기본 설정 === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;  /* padding을 width에 포함 (★ 반응형 필수!) */
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        /* === 페이지 제목 === */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        /* === 카드 컨테이너 (Flexbox) === */
+        .card-container {
+            display: flex;           /* Flexbox 사용 */
+            flex-wrap: wrap;         /* ★ 줄바꿈 허용! 반응형의 핵심 */
+            gap: 20px;               /* 카드 사이 간격 */
+            max-width: 1200px;       /* 최대 너비 제한 */
+            margin: 0 auto;         /* 가운데 정렬  위에랑 세트임 너비지정을 꼭 해줄것*/
+        }
+
+        /* === 개별 카드 === */
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;        /* 이미지가 둥근 모서리 밖으로 안 나가게 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            /* ★ 핵심: flex 아이템 크기 설정 */
+            flex: 1 1 300px;
+            /* flex-grow: 1   → 남는 공간을 채움
+               flex-shrink: 1 → 공간 부족하면 줄어듦
+               flex-basis: 300px → 기본 크기 300px
+               → 300px 이상이면 한 줄에 들어가고,
+                  부족하면 다음 줄로 넘어감! */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 카드 이미지 */
+        .card img {
+            width: 100%;             /* 카드 너비에 맞춤 */
+            height: 200px;
+            object-fit: cover;       /* 비율 유지하며 꽉 채움 */
+        }
+
+        /* 카드 내용 */
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* ========== 미디어쿼리: 태블릿 (768px 이하) ========== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;     /* 제목 크기 줄이기 */
+            }
+
+            .card {
+                flex: 1 1 calc(50% - 20px);
+                /* 한 줄에 2개씩 (50%에서 gap 빼기) */
+            }
+        }
+
+        /* ========== 미디어쿼리: 모바일 (480px 이하) ========== */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            body {
+                padding: 10px;       /* 양쪽 여백 줄이기 */
+            }
+
+            .card {
+                flex: 1 1 100%;
+                /* 한 줄에 1개씩 (100%) */
+            }
+
+            .card img {
+                height: 180px;       /* 이미지 높이 줄이기 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>반응형 카드 레이아웃</h1>
+
+    <div class="card-container">
+        <!-- 카드 1 -->
+        <div class="card">
+            <img src="https://picsum.photos/400/300?random=1" alt="카드 이미지 1">
+            <div class="card-content">
+                <h2>첫 번째 카드</h2>
+                <p>이 카드는 화면 크기에 따라 배치가 바뀌어요! 브라우저 창 크기를 줄여보세요.</p>
+            </div>
+        </div>
+
+        <!-- 카드 2 -->
+        <div class="card">
+            <img src="https://picsum.photos/400/300?random=2" alt="카드 이미지 2">
+            <div class="card-content">
+                <h2>두 번째 카드</h2>
+                <p>flex-wrap과 미디어쿼리를 조합하면 반응형 레이아웃을 쉽게 만들 수 있어요.</p>
+            </div>
+        </div>
+
+        <!-- 카드 3 -->
+        <div class="card">
+            <img src="https://picsum.photos/400/300?random=3" alt="카드 이미지 3">
+            <div class="card-content">
+                <h2>세 번째 카드</h2>
+                <p>실무에서도 이런 패턴을 굉장히 많이 사용합니다. 잘 기억해 두세요!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

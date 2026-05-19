@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-list</title>
+    <link rel = "stylesheet" href="stylehome.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 제목 -->
+        <h1>나의 To-do List</h1>
+        <!-- 입력영역 -->
+        <div class="input-area">
+            <input
+                type="text"
+                id="todo-input"
+                placeholder="할 일을 입력하세요..."
+                >
+            <button id="add-btn">추가</button>
+        </div>
+        <!-- 할 일 목록 여기에 js로 추가 -->
+        <ul id="todo-list">
+            <!-- js가 여기에 추가 예정 -->
+            
+        </ul>
+        <!-- 정보영역 -->
+        <div class="info">
+            <span id="total-count">총 0개</span>
+            <span id="completed-count">완료 0개</span>
+        </div>
+    </div>
+
+    <button id="clear-btn">전체삭제</button>
+
+    <!-- java연결파일 항상 맨아래 -->
+    <script src="homeapp.js"></script>
+</body>
+</html>

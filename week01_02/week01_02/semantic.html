@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>홍길동의 웹사이트</title>
+</head>
+
+<body>
+
+    <!-- header: 페이지 맨 위 — 로고, 사이트 이름 -->
+    <header>
+        <h1>홍길동의 포트폴리오</h1>
+        <p>프론트엔드 개발자를 꿈꾸는 홍길동입니다</p>
+    </header>
+
+    <!-- nav: 네비게이션 — 메뉴, 링크 모음 -->
+    <nav>
+        <a href="#about">소개</a> |
+        <a href="#skills">기술</a> |
+        <a href="#contact">연락처</a>
+    </nav>
+
+    <!-- main: 페이지의 핵심 내용 -->
+    <main>
+
+        <!-- section: 주제별로 나눈 구역 -->
+        <section id="about">
+            <h2>자기소개</h2>
+            <p>안녕하세요! 웹 개발을 배우고 있는 홍길동입니다.</p>
+        </section>
+
+        <section id="skills">
+            <h2>배우고 있는 기술</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript (예정)</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>연락처</h2>
+            <p>이메일: sangwon@example.com</p>
+        </section>
+
+    </main>
+
+    <!-- footer: 페이지 맨 아래 — 저작권, 연락처 등 -->
+    <footer>
+        <p>&copy; 2026 홍길동. All rights reserved.</p>
+    </footer>
+
+
+    <!-- ❌ div만 쓴 경우 — 무슨 영역인지 알기 어려움 -->
+    <div>
+        <div>
+            <div>로고</div>
+            <div>메뉴</div>
+        </div>
+        <div>
+            <div>본문 내용</div>
+        </div>
+        <div>하단 정보</div>
+    </div>
+
+    <!-- ✅ 시맨틱 태그를 쓴 경우 — 한눈에 구조가 보임 -->
+    <header>
+        <h1>로고</h1>
+        <nav>메뉴</nav>
+    </header>
+    <main>
+        <section>본문 내용</section>
+    </main>
+    <footer>하단 정보</footer>
+</body>
+
+</html>

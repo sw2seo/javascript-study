@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상원님의 To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 전체를 감싸는 컨테이너 -->
+    <div class="container">
+
+        <!-- 제목 -->
+        <h1> 나의 To-Do List</h1>
+
+        <!-- 입력 영역 -->
+        <div class="input-area">
+            <input
+                type="text"
+                id="todo-input"
+                placeholder="할 일을 입력하세요..."
+            >
+            <button id="add-btn">추가</button>
+        </div>
+
+        <!-- 할 일 목록 (여기에 JS로 아이템을 추가할 거예요!) -->
+        <ul id="todo-list">
+            <!-- JS가 여기에 <li>를 추가합니다 -->
+        </ul>
+
+        <!-- 정보 영역 -->
+        <div class="info">
+            <span id="total-count">총 0개</span>
+            <span id="completed-count">완료 0개</span>
+        </div>
+
+    </div>
+
+    <!-- JavaScript 파일 연결 (항상 body 맨 아래!) -->
+    <script src="app.js"></script>
+</body>
+</html>

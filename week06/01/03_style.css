@@ -1,0 +1,45 @@
+/* ==================================
+   classList 실습을 위한 CSS
+   ================================== */
+
+/* 기본 카드 스타일 */
+.card {
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    transition: all 0.3s ease;  /* 부드러운 전환 효과! */
+}
+
+/* active 상태 — 강조 */
+.active {
+    background-color: #E3F2FD;
+    border-color: #2196F3;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+/* highlight 상태 — 노란 강조 */
+.highlight {
+    background-color: #FFF9C4;
+    border-color: #FDD835;
+}
+
+/* danger 상태 — 빨간 경고 */
+.danger {
+    background-color: #FFEBEE;
+    border-color: #F44336;
+    color: #C62828;
+}
+
+/* hidden 상태 — 숨기기 */
+.hidden {
+    display: none;
+}
+
+/* completed 상태 — 완료 표시 */
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: #999;
+}
