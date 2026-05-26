@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날씨 앱 - Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 
+     HTML 구조 설계 포인트
+
+    1. form 태그 사용 → submit 이벤트 처리 가능!
+    2. hidden 클래스 → 처음에 숨겨놓고 필요할 때 보여주기
+    3. 각 영역에 id 부여 → JavaScript에서 쉽게 선택
+    4. 시맨틱 태그 활용 → header, footer
+    5. 데이터 표시할 곳에 "--" 기본값 → 로딩 전 상태 
+-->
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- 헤더 영역 -->
+        <header class="app-header">
+            <h1> 오늘의 날씨</h1>
+            <p class="subtitle">도시를 검색해서 날씨를 확인하세요</p>
+        </header>
+
+        <!-- 검색 영역 -->
+        <div class="search-section">
+            <form id="searchForm">
+                <input type="text" id="cityInput" placeholder="도시 이름을 입력하세요 (예: Seoul, 부산)" autocomplete="off">
+                <button type="submit" id="searchBtn">검색</button>
+            </form>
+        </div>
+
+        <!-- 로딩 표시 -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>날씨 정보를 가져오는 중...</p>
+        </div>
+
+        <!-- 에러 메시지 -->
+        <div id="errorMsg" class="error-message hidden">
+            <p id="errorText">에러 메시지</p>
+        </div>
+
+        <!-- 날씨 정보 표시 영역 -->
+        <div id="weatherCard" class="weather-card hidden">
+            <div class="weather-main">
+                <h2 id="cityName">도시 이름</h2>
+                <div class="weather-icon" id="weatherIcon"></div>
+                <p class="temperature" id="temperature">--°C</p>
+                <p class="weather-desc" id="weatherDesc">날씨 상태</p>
+            </div>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-label"> 풍속</span>
+                    <span class="detail-value" id="windSpeed">-- km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label"> 풍향</span>
+                    <span class="detail-value" id="windDirection">--°</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label"> 업데이트</span>
+                    <span class="detail-value" id="updateTime">--:--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 최근 검색 기록 -->
+        <div class="search-history">
+            <h3> 최근 검색</h3>
+            <div id="historyList" class="history-list">
+                <span class="history-empty">검색 기록이 없습니다</span>
+            </div>
+        </div>
+
+        <!-- 푸터 -->
+        <footer class="app-footer">
+            <p>Powered by <a href="https://open-meteo.com/" target="_blank">Open-Meteo API</a></p>
+            <p>Made by 홍길동 | Week 06 프로젝트</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

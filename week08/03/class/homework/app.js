@@ -1,8 +1,4 @@
-// ========================================
-// 날씨 앱 (Weather App) - app.js
-// ========================================
-
-// --- 1. DOM 요소 선택 ---
+// 1. DOM 요소 선택
 const searchForm = document.querySelector('#searchForm');
 const cityInput = document.querySelector('#cityInput');
 const searchBtn = document.querySelector('#searchBtn');
@@ -19,25 +15,22 @@ const windDirectionEl = document.querySelector('#windDirection');
 const updateTimeEl = document.querySelector('#updateTime');
 const historyList = document.querySelector('#historyList');
 
-// — 2. 검색 기록 저장 배열 —
+// 2. 검색기록 저장배열
 let searchHistory = [];
 
-// --- 3. 날씨 코드 매핑 ---
-// Open-Meteo의 weathercode를 사람이 읽을 수 있는 텍스트로 변환
+// 3. 날씨 코드 매핑
 
 function getWeatherInfo(code) {
-    // WMO Weather interpretation codes
-    // 참고: https://open-meteo.com/en/docs
     const weatherMap = {
-        0:  { desc: '맑음',           icon: '' },
-        1:  { desc: '대체로 맑음',     icon: '☀️' },
-        2:  { desc: '구름 조금',       icon: '' },
-        3:  { desc: '흐림',           icon: '' },
-        45: { desc: '안개',           icon: '' },
-        48: { desc: '안개',           icon: '' },
-        51: { desc: '가벼운 이슬비',   icon: '' },
-        53: { desc: '이슬비',         icon: '' },
-        55: { desc: '짙은 이슬비',     icon: '' },
+        0: { desc: '맑음',  icon:'🌞'},
+        1: { desc: '대체로 맑음',  icon: '☀️'},
+        2: { desc: '구름 조금',  icon:'🌤️'},
+        3: { desc: '흐림', icon:'🌥️'},
+        45: { desc: '안개', icon: '😶‍🌫️'},
+        48: { desc: '안개', icon: '☁️'},
+        51: { desc: '가벼운 이슬비', icon: '🌦️'},
+        53: { desc: '이슬비', icon: '🌧️'},
+        55: { desc: '짙은 이슬비', icon: ''},
         61: { desc: '가벼운 비',       icon: '' },
         63: { desc: '비',             icon: '' },
         65: { desc: '폭우',           icon: '' },
@@ -52,14 +45,15 @@ function getWeatherInfo(code) {
         86: { desc: '눈소나기',       icon: '' },
         95: { desc: '뇌우',           icon: '' },
         96: { desc: '우박 동반 뇌우',  icon: '' },
-        99: { desc: '강한 우박 뇌우',  icon: '' },
+        99: { desc: '강한 우박 뇌우',  icon: '' }
+
     };
 
     // 매핑에 있으면 반환, 없으면 기본값
-    return weatherMap[code] || { desc: '알 수 없음', icon: '' };
+    return weatherMap[code] || {desc: '알 수 없음', icon: '❓'};
 }
 
-// --- 4. UI 상태 관리 함수 ---
+// 4. UI 상태 관리 함수
 
 // 로딩 표시
 function showLoading() {
@@ -91,25 +85,16 @@ function showWeatherCard() {
 }
 
 // 5. API 호출 함수
-
 // 5-1. 도시 이름으로 좌표 검색
 async function searchCity(cityName) {
-    // encodeURIComponent() 란?
-
-    // URL에 한글이나 특수문자를 넣으면 깨질 수 있어요.
-    // encodeURIComponent("서울") → "%EC%84%9C%EC%9A%B8"
-
-    // 이렇게 변환해서 URL-safe하게 만들어 줍니다.
-    // 항상 사용자 입력을 URL에 넣을 때는 이걸 써주세요!
     const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=ko`;
-    
     const response = await fetch(url);
     const data = await response.json();
 
     console.log(data);
 
     if (!data.results || data.results.length === 0) {
-        throw new Error(`"${cityName}" 도시를 찾을 수 없읍니다. 다른이름으로 검색 해보세요.`);
+        throw new Error(`"${cityName}" 도시를 찾을 수 없습니다. 다른이름으로 검색해보세요.`);
     }
 
     const city = data.results[0];
@@ -124,34 +109,31 @@ async function searchCity(cityName) {
 // 5-2. 좌표로 날씨 데이터 가져오기
 async function fetchWeather(latitude, longitude) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=Asia%2FSeoul`;
-
     const response = await fetch(url);
 
-    if (!response.ok) {
-        throw new Error('날씨 데이터를 가져올 수 없습니다.');
+    if(!response.ok) {
+        throw new Error('날씨 데이터를 가져올수 없습니다.');
     }
 
     const data = await response.json();
     return data.current_weather;
 }
 
-
-// --- 6. 화면에 날씨 정보 표시 ---
+// 6. 화면에 날씨 정보 표시
 function displayWeather(cityInfo, weather) {
-    // 날씨 코드로 설명과 아이콘 가져오기
     const weatherInfo = getWeatherInfo(weather.weathercode);
 
     // 각 요소에 데이터 넣기
-    cityNameEl.textContent = ` ${cityInfo.name} (${cityInfo.country})`;
+    cityNameEl.textContent = `${cityInfo.name} (${cityInfo.country})`;
     weatherIcon.textContent = weatherInfo.icon;
     temperatureEl.textContent = `${weather.temperature}°C`;
     weatherDescEl.textContent = weatherInfo.desc;
     windSpeedEl.textContent = `${weather.windspeed} km/h`;
     windDirectionEl.textContent = `${weather.winddirection}°`;
 
-    // 업데이트 시간 포맷
-    const time = weather.time;  // "2026-03-03T14:00" 형태
-    const timeParts = time.split('T')[1];  // "14:00"
+    // 업데이트 시간 포멧
+    const time = weather.time;
+    const timeParts = time.split('T')[1];
     updateTimeEl.textContent = timeParts;
 
     // 날씨 카드 보여주기
@@ -160,29 +142,27 @@ function displayWeather(cityInfo, weather) {
 
 // 7. 검색 기록 관리
 function addToHistory(cityName) {
-    // 이미 있으면 제거(최신으로 옮기기)
     searchHistory = searchHistory.filter(function(name) {
         return name !== cityName;
     });
 
-    // 앞에 추가 
+    //앞에 추가
     searchHistory.unshift(cityName);
 
     // 최대 5개만 유지
     if (searchHistory.length > 5) {
         searchHistory.pop();
     }
-
     // 화면 업데이트
     renderHistory();
 }
 
 function renderHistory() {
     if (searchHistory.length === 0) {
-        historyList.innerHTML = '<span class="history-empty"> 검색 기록이 없습니다</span>';
+        historyList.innerHTML = '<span class="history-empty"> 검색기록이 없습니다.</span>';
         return;
     }
-    
+
     historyList.innerHTML = '';
 
     searchHistory.forEach(function(city) {
@@ -195,17 +175,15 @@ function renderHistory() {
             cityInput.value = city;
             handleSearch();
         });
-
         historyList.appendChild(item);
     })
 }
 
-
-// --- 8. 메인 검색 함수 ---
+// 8. 메인 검색 함수
 async function handleSearch() {
     const cityName = cityInput.value.trim();
 
-    // 빈 값 확인
+    // 빈값 확인
     if (cityName === '') {
         showError('도시 이름을 입력해 주세요!');
         return;
@@ -215,41 +193,27 @@ async function handleSearch() {
     showLoading();
 
     try {
-        // STEP 1: 도시 검색 → 좌표 얻기
+        // STEP1 : 도시 검색 → 좌표얻기
         const cityInfo = await searchCity(cityName);
-        console.log('도시 정보:', cityInfo);
+        console.log('도시 정도:', cityInfo);
 
-        // STEP 2: 좌표로 날씨 데이터 가져오기
+        // STEP2: 좌표로 날씨 데이터 가져오기
         const weather = await fetchWeather(cityInfo.latitude, cityInfo.longitude);
         console.log('날씨 데이터:', weather);
 
-        // STEP 3: 화면에 표시
+        // STEP3: 화면에 표시
         displayWeather(cityInfo, weather);
 
-        // STEP 4: 검색 기록 추가
+        // STEP4: 검색기록 추가
         addToHistory(cityInfo.name);
-
     } catch (error) {
-        // 에러 발생 시
         showError(error.message);
         console.error('검색 에러:', error);
     }
 }
 
-
-// --- 9. 이벤트 리스너 연결 ---
-
-// 폼 submit 이벤트 (검색 버튼 클릭 또는 Enter)
+// 9. 이벤트 리스너 연결
 searchForm.addEventListener('submit', function(e) {
-    e.preventDefault();  // 페이지 새로고침 방지!
+    e.preventDefault();
     handleSearch();
 });
-
-
-// 페이지 로드 시 기본 도시 검색 (선택사항)
-// 주석을 풀면 페이지 열 때 바로 서울 날씨가 표시됩니다!
-// window.addEventListener('load', function() {
-//     cityInput.value = 'Seoul';
-//     handleSearch();
-// });
-
