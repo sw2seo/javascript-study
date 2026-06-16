@@ -14,7 +14,7 @@ const windSpeedEl = document.querySelector('#windSpeed');
 const windDirectionEl = document.querySelector('#windDirection');
 const updateTimeEl = document.querySelector('#updateTime');
 const historyList = document.querySelector('#historyList');
-
+const locationBtn = document.querySelector('#locationBtn');
 // 2. 검색기록 저장배열
 let searchHistory = [];
 
@@ -22,35 +22,35 @@ let searchHistory = [];
 
 function getWeatherInfo(code) {
     const weatherMap = {
-        0: { desc: '맑음',  icon:'🌞'},
-        1: { desc: '대체로 맑음',  icon: '☀️'},
-        2: { desc: '구름 조금',  icon:'🌤️'},
-        3: { desc: '흐림', icon:'🌥️'},
-        45: { desc: '안개', icon: '😶‍🌫️'},
-        48: { desc: '안개', icon: '☁️'},
-        51: { desc: '가벼운 이슬비', icon: '🌦️'},
-        53: { desc: '이슬비', icon: '🌧️'},
-        55: { desc: '짙은 이슬비', icon: ''},
-        61: { desc: '가벼운 비',       icon: '' },
-        63: { desc: '비',             icon: '' },
-        65: { desc: '폭우',           icon: '' },
-        71: { desc: '가벼운 눈',       icon: '' },
-        73: { desc: '눈',             icon: '' },
-        75: { desc: '폭설',           icon: '' },
-        77: { desc: '싸락눈',         icon: '' },
-        80: { desc: '가벼운 소나기',   icon: '' },
-        81: { desc: '소나기',         icon: '' },
-        82: { desc: '강한 소나기',     icon: '' },
+        0: { desc: '맑음', icon: '🌞' },
+        1: { desc: '대체로 맑음', icon: '☀️' },
+        2: { desc: '구름 조금', icon: '🌤️' },
+        3: { desc: '흐림', icon: '🌥️' },
+        45: { desc: '안개', icon: '😶‍🌫️' },
+        48: { desc: '안개', icon: '☁️' },
+        51: { desc: '가벼운 이슬비', icon: '🌦️' },
+        53: { desc: '이슬비', icon: '🌧️' },
+        55: { desc: '짙은 이슬비', icon: '' },
+        61: { desc: '가벼운 비', icon: '' },
+        63: { desc: '비', icon: '' },
+        65: { desc: '폭우', icon: '' },
+        71: { desc: '가벼운 눈', icon: '' },
+        73: { desc: '눈', icon: '' },
+        75: { desc: '폭설', icon: '' },
+        77: { desc: '싸락눈', icon: '' },
+        80: { desc: '가벼운 소나기', icon: '' },
+        81: { desc: '소나기', icon: '' },
+        82: { desc: '강한 소나기', icon: '' },
         85: { desc: '가벼운 눈소나기', icon: '' },
-        86: { desc: '눈소나기',       icon: '' },
-        95: { desc: '뇌우',           icon: '' },
-        96: { desc: '우박 동반 뇌우',  icon: '' },
-        99: { desc: '강한 우박 뇌우',  icon: '' }
+        86: { desc: '눈소나기', icon: '' },
+        95: { desc: '뇌우', icon: '' },
+        96: { desc: '우박 동반 뇌우', icon: '' },
+        99: { desc: '강한 우박 뇌우', icon: '' }
 
     };
 
     // 매핑에 있으면 반환, 없으면 기본값
-    return weatherMap[code] || {desc: '알 수 없음', icon: '❓'};
+    return weatherMap[code] || { desc: '알 수 없음', icon: '❓' };
 }
 
 // 4. UI 상태 관리 함수
@@ -100,7 +100,7 @@ async function searchCity(cityName) {
     const city = data.results[0];
     return {
         name: city.name,
-        country:city.country || '',
+        country: city.country || '',
         latitude: city.latitude,
         longitude: city.longitude
     }
@@ -111,13 +111,34 @@ async function fetchWeather(latitude, longitude) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=Asia%2FSeoul`;
     const response = await fetch(url);
 
-    if(!response.ok) {
+    if (!response.ok) {
         throw new Error('날씨 데이터를 가져올수 없습니다.');
     }
 
     const data = await response.json();
     return data.current_weather;
 }
+//=============추가 과제==================
+
+function setTemperatureColor(temp) {
+    let gradient;
+
+    if (temp <= 0) {
+        //weatherCard.style.background = '#1915e4';
+        gradient = 'linear-gradient(135deg, #adc7ee 0%, #1915e4 100%)';
+    } else if (temp <= 15) {
+        //weatherCard.style.background = '#19bac0';
+        gradient = 'linear-gradient(135deg, #cedbf0 0%, #19bac0 100%)';
+    } else if (temp <= 25) {
+        //weatherCard.style.background = '#d8cc1e';
+        gradient = 'linear-gradient(135deg, #ebeec3 0%, #d8cc1e 100%)';
+    } else {
+        //weatherCard.style.background = '#da711c';
+        gradient = 'linear-gradient(135deg, #ebc791 0%, #da711c 100%)'
+    }
+    weatherCard.style.background = gradient;
+}
+
 
 // 6. 화면에 날씨 정보 표시
 function displayWeather(cityInfo, weather) {
@@ -136,15 +157,24 @@ function displayWeather(cityInfo, weather) {
     const timeParts = time.split('T')[1];
     updateTimeEl.textContent = timeParts;
 
+    //추가과제 실행
+    setTemperatureColor(weather.temperature);
+
     // 날씨 카드 보여주기
     showWeatherCard();
+
+}
+
+function saveHistoryToStorage() {
+
 }
 
 // 7. 검색 기록 관리
 function addToHistory(cityName) {
-    searchHistory = searchHistory.filter(function(name) {
+    searchHistory = searchHistory.filter(function (name) {
         return name !== cityName;
     });
+
 
     //앞에 추가
     searchHistory.unshift(cityName);
@@ -154,8 +184,30 @@ function addToHistory(cityName) {
         searchHistory.pop();
     }
     // 화면 업데이트
+    saveHistoryToStorage();
     renderHistory();
+
 }
+
+// A-2 연습해보기 <-아에 이해가 안감
+
+function saveHistoryToStorage() {
+    localStorage.setItem('history', JSON.stringify(searchHistory));
+
+}
+
+function loadHistoryFromStorage() {
+    const savedHistory = localStorage.getItem('history');
+
+    if (savedHistory) {
+        searchHistory = JSON.parse(savedHistory);
+    };
+
+    renderHistory();
+
+};
+
+loadHistoryFromStorage();
 
 function renderHistory() {
     if (searchHistory.length === 0) {
@@ -165,13 +217,13 @@ function renderHistory() {
 
     historyList.innerHTML = '';
 
-    searchHistory.forEach(function(city) {
+    searchHistory.forEach(function (city) {
         const item = document.createElement('span');
         item.classList.add('history-item');
         item.textContent = city;
 
         // 검색기록 클릭 시 다시 검색
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function () {
             cityInput.value = city;
             handleSearch();
         });
@@ -213,7 +265,42 @@ async function handleSearch() {
 }
 
 // 9. 이벤트 리스너 연결
-searchForm.addEventListener('submit', function(e) {
+searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     handleSearch();
 });
+
+// A-3 현재위치 자동검색 기능
+locationBtn.addEventListener('click', function () {
+    console.log('버튼 클릭됨');
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            async function (position) {
+                console.log(position.coords.latitude);
+                console.log(position.coords.longitude);
+
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const weather = await fetchWeather(lat, lon);
+
+                console.log(weather);
+
+                const cityInfo = {
+                    name: '현재 위치',
+                    country: ''
+                };
+                displayWeather(cityInfo, weather);
+            }
+        )
+    } else {
+        console.log('위치를 찾을수 없습니다');
+    };
+});
+
+
+
+
+
+// -----------추가 과제------------------
+
