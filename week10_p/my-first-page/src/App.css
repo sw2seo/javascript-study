@@ -1,0 +1,71 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 2px solid #eee;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.job {
+  color: #666;
+  margin: 4px 0;
+}
+
+.bio, .skill-list, .project-list, .contact-footer {
+  margin: 30px 0;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.skill-card {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.skill-card h4 {
+  margin: 0 0 4px 0;
+}
+
+.project-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.project-card a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+.contact-footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-footer li {
+  padding: 4px 0;
+}
