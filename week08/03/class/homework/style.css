@@ -31,6 +31,7 @@ body {
 
 /* 헤더 */
 .app-header {
+    position: relative;
     text-align: center;
     margin-bottom: 25px;
 }
@@ -239,4 +240,168 @@ body {
 /* 유틸리티 */
 .hidden {
     display: none !important;
+}
+
+.dark {
+    background: #222;
+}
+
+body.dark {
+    background: #222;
+    color: white;
+}
+
+body.dark .app-container {
+    background: #333;
+    color: white;
+}
+
+body.dark .app-header h1 {
+    color: white;
+}
+
+body.dark .subtitle {
+    color: #ddd;
+}
+
+body.dark .search-history h3 {
+    color: white;
+}
+
+/* 추가 */
+
+.history-item button {
+    width: 20px;
+    height: 20px;
+
+    margin-left: 8px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #ff6b6b;
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.history-item button:hover {
+    background: #e74c3c;
+    transform: scale(1.2);
+}
+
+#forecast {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;   /* 가로 스크롤 */
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.forecast-item {
+    min-width: 110px;   /* 카드 크기 */
+    padding: 10px;
+    border-radius: 10px;
+    background: #f5f5f5;
+    text-align: center;
+    flex-shrink: 0;     /* 작아지지 않게 */
+    font-size: 0.85rem;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.unit-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    gap: 8px;
+}
+
+.unit-selector label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    background: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+.unit-selector label:hover {
+    background: #667eea;
+    color: white;
+}
+
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#deleteBtn {
+    background: #ff6b6b;
+    color: white;
+}
+
+#deleteBtn:hover {
+    background: #e74c3c;
+    transform: translateY(-2px);
+}
+
+#locationBtn {
+    background: #4dabf7;
+    color: white;
+}
+
+#locationBtn:hover {
+    background: #339af0;
+    transform: translateY(-2px);
+}
+
+#darkBtn {
+    background: #555;
+    color: white;
+}
+
+#darkBtn:hover {
+    background: #222;
+    transform: translateY(-2px);
+}
+
+body.dark .unit-selector label {
+    background: #555;
+    color: white;
+    border-color: #777;
+}
+
+body.dark .forecast-item {
+    background: #444;
+    color: white;
 }

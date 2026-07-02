@@ -15,6 +15,13 @@ const windDirectionEl = document.querySelector('#windDirection');
 const updateTimeEl = document.querySelector('#updateTime');
 const historyList = document.querySelector('#historyList');
 const locationBtn = document.querySelector('#locationBtn');
+let currentTempC = null;
+let currentDaily = null;
+const deleteBtn = document.querySelector('#deleteBtn');
+const darkBtn = document.querySelector('#darkBtn');
+const body = document.body;
+const forecast = document.querySelector('#forecast');
+
 // 2. 검색기록 저장배열
 let searchHistory = [];
 
@@ -106,9 +113,9 @@ async function searchCity(cityName) {
     }
 }
 
-// 5-2. 좌표로 날씨 데이터 가져오기
+// 5-2. 좌표로 날씨 데이터 가져오기 + A8. 7일 날씨 예보 (도전 — 다른 API 엔드포인트)
 async function fetchWeather(latitude, longitude) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=Asia%2FSeoul`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=Asia%2FSeoul&daily=weathercode,temperature_2m_max,temperature_2m_min`;
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -116,7 +123,12 @@ async function fetchWeather(latitude, longitude) {
     }
 
     const data = await response.json();
-    return data.current_weather;
+    console.log(data);
+    console.log(data.current_weather);
+    return {
+        current: data.current_weather,
+        daily: data.daily
+    };
 }
 //=============추가 과제==================
 
@@ -147,6 +159,7 @@ function displayWeather(cityInfo, weather) {
     // 각 요소에 데이터 넣기
     cityNameEl.textContent = `${cityInfo.name} (${cityInfo.country})`;
     weatherIcon.textContent = weatherInfo.icon;
+    currentTempC = weather.temperature;
     temperatureEl.textContent = `${weather.temperature}°C`;
     weatherDescEl.textContent = weatherInfo.desc;
     windSpeedEl.textContent = `${weather.windspeed} km/h`;
@@ -165,9 +178,37 @@ function displayWeather(cityInfo, weather) {
 
 }
 
-function saveHistoryToStorage() {
+//A-4 온도f로 추가
+
+function updateTemperature() {
+    const unitRadios = document.querySelectorAll('[name="unit"]');
+
+    unitRadios.forEach(function (radio) {
+
+        radio.addEventListener(
+            'change',
+            function () {
+                console.log('단위변경');
+
+
+                if (radio.value === 'f') {
+                    const tempF = currentTempC * 9 / 5 + 32;
+                    temperatureEl.textContent = `${tempF.toFixed(1)}°F`
+                } else {
+                    temperatureEl.textContent = `${currentTempC.toFixed(1)}°C`;
+                }
+                if (currentDaily) {
+                displayForecast(currentDaily);
+                }
+            }
+        );
+
+    });
 
 }
+
+updateTemperature();
+
 
 // 7. 검색 기록 관리
 function addToHistory(cityName) {
@@ -186,8 +227,9 @@ function addToHistory(cityName) {
     // 화면 업데이트
     saveHistoryToStorage();
     renderHistory();
-
 }
+
+
 
 // A-2 연습해보기 <-아에 이해가 안감
 
@@ -203,6 +245,11 @@ function loadHistoryFromStorage() {
         searchHistory = JSON.parse(savedHistory);
     };
 
+    // A-6. 최근 검색 도시 자동 표시 
+    if (searchHistory.length >= 1) {
+        cityInput.value = searchHistory[0];
+            handleSearch();
+};
     renderHistory();
 
 };
@@ -222,13 +269,36 @@ function renderHistory() {
         item.classList.add('history-item');
         item.textContent = city;
 
+        //a-5 과제
+        const deleteBtn2 = document.createElement('button');
+        deleteBtn2.textContent = 'X';
+        item.appendChild(deleteBtn2);
+
+        deleteBtn2.addEventListener('click', function (e) {
+            console.log('삭제버튼눌림');
+            searchHistory = searchHistory.filter(function (name) {
+                return name !== city;
+            });
+            console.log(e);
+            e.stopPropagation();
+            saveHistoryToStorage();
+            renderHistory();
+        });
+
+        deleteBtn.addEventListener('click', function() {
+            searchHistory = [];
+            saveHistoryToStorage();
+            renderHistory();
+        });
+
+
         // 검색기록 클릭 시 다시 검색
         item.addEventListener('click', function () {
             cityInput.value = city;
             handleSearch();
         });
         historyList.appendChild(item);
-    })
+    });
 }
 
 // 8. 메인 검색 함수
@@ -252,9 +322,11 @@ async function handleSearch() {
         // STEP2: 좌표로 날씨 데이터 가져오기
         const weather = await fetchWeather(cityInfo.latitude, cityInfo.longitude);
         console.log('날씨 데이터:', weather);
+        currentDaily = weather.daily;
 
         // STEP3: 화면에 표시
-        displayWeather(cityInfo, weather);
+        displayWeather(cityInfo, weather.current);
+        displayForecast(currentDaily);
 
         // STEP4: 검색기록 추가
         addToHistory(cityInfo.name);
@@ -264,11 +336,65 @@ async function handleSearch() {
     }
 }
 
+function displayForecast(daily) {
+    forecast.innerHTML = '';
+
+    // 현재 선택된 단위 확인
+    const unit = document.querySelector('[name="unit"]:checked').value;
+
+    daily.time.forEach(function(day, index) {
+
+        const div = document.createElement('div');
+        div.classList.add('forecast-item');
+
+        const weatherInfo = getWeatherInfo(daily.weathercode[index]);
+
+        let maxTemp = daily.temperature_2m_max[index];
+        let minTemp = daily.temperature_2m_min[index];
+        let symbol = "°C";
+
+        // F 선택 시 변환
+        if (unit === "f") {
+            maxTemp = maxTemp * 9 / 5 + 32;
+            minTemp = minTemp * 9 / 5 + 32;
+            symbol = "°F";
+        }
+
+        div.innerHTML = `
+            날짜 : ${day}<br>
+            ${weatherInfo.icon}<br>
+            ${weatherInfo.desc}<br>
+            최고기온 : ${maxTemp.toFixed(1)}${symbol}<br>
+            최저기온 : ${minTemp.toFixed(1)}${symbol}
+        `;
+
+        forecast.appendChild(div);
+    });
+}
+
+
 // 9. 이벤트 리스너 연결
 searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     handleSearch();
 });
+
+// a-7다크모드추가
+darkBtn.addEventListener('click', function () {
+    body.classList.toggle('dark');
+
+    const isDark = body.classList.contains('dark');
+    localStorage.setItem('darkMode', isDark);
+
+    
+});
+
+const savedMode = localStorage.getItem('darkMode');
+
+    if (savedMode === 'true') {
+    body.classList.add('dark');
+    }
+
 
 // A-3 현재위치 자동검색 기능
 locationBtn.addEventListener('click', function () {
@@ -283,14 +409,16 @@ locationBtn.addEventListener('click', function () {
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
                 const weather = await fetchWeather(lat, lon);
+                currentDaily = weather.daily;
 
+                displayForecast(currentDaily);
                 console.log(weather);
 
                 const cityInfo = {
                     name: '현재 위치',
                     country: ''
                 };
-                displayWeather(cityInfo, weather);
+                displayWeather(cityInfo, weather.current);
             }
         )
     } else {
@@ -301,6 +429,4 @@ locationBtn.addEventListener('click', function () {
 
 
 
-
 // -----------추가 과제------------------
-

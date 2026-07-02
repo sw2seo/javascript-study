@@ -21,9 +21,26 @@
     <div class="app-container">
         <!-- 헤더 영역 -->
         <header class="app-header">
-            <h1> 오늘의 날씨</h1>
-            <p class="subtitle">도시를 검색해서 날씨를 확인하세요</p>
-        </header>
+
+    <div class="header">
+        <h1>오늘의 날씨</h1>
+
+        <div class="unit-selector">
+            <label>
+                <input type="radio" name="unit" value="c" checked>
+                °C
+            </label>
+
+            <label>
+                <input type="radio" name="unit" value="f">
+                °F
+            </label>
+        </div>
+    </div>
+
+    <p class="subtitle">도시를 검색해서 날씨를 확인하세요</p>
+
+</header>
 
         <!-- 검색 영역 -->
         <div class="search-section">
@@ -76,14 +93,22 @@
             </div>
         </div>
 
-        <button id="locationBtn">현재위치</button>
+<div class="button-group">
+    <button id="deleteBtn">🗑️ 전체삭제</button>
+    <button id="locationBtn">📍 현재위치</button>
+    <button id="darkBtn">🌙 다크</button>
+</div>
+
+        <div id="forecast"> 날짜</div>
 
         <!-- 푸터 -->
         <footer class="app-footer">
             <p>Powered by <a href="https://open-meteo.com/" target="_blank">Open-Meteo API</a></p>
-            <p>Made by 홍길동 | Week 06 프로젝트</p>
+            <p>Made by 서상원 | Week 06 프로젝트</p>
         </footer>
     </div>
+
+    
 
     <script src="app.js"></script>
 </body>
