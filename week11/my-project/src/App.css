@@ -1,0 +1,113 @@
+/* Day 3 종합 실습 — 메모장 앱 스타일 */
+
+/* 전체 컨테이너: 가운데 정렬 + 최대 너비 제한 */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  color: #222;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* 메모 입력 폼 영역 */
+.memo-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* 입력창 아래쪽: 글자 수 + 추가 버튼이 양쪽에 배치 */
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* 글자 수 표시 — 기본 회색 */
+.count {
+  color: #666;
+  font-size: 13px;
+}
+
+/* 100자 초과 시 className에 'over'가 추가되어 빨간색으로 강조 */
+.count.over {
+  color: red;
+  font-weight: bold;
+}
+
+/* 검증 실패 시 에러 메시지 — 빨간색 */
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* 메모 목록 영역 */
+.memo-list {
+  margin-top: 30px;
+}
+
+.memo-list h2 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* 메모 한 줄: 내용 + 삭제 버튼이 양쪽에 배치 */
+.memo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+.memo-item p {
+  margin: 0;
+  flex: 1;
+}
+
+/* 메모가 0개일 때 보여줄 안내 문구 */
+.empty {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+}
+
+/* 버튼 공통 — 기본 파란색 */
+button {
+  padding: 8px 16px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #3a7bc8;
+}
+
+/* 메모 항목 안의 삭제 버튼만 빨간색으로 구분 */
+.memo-item button {
+  background: #e74c3c;
+}
+
+.memo-item button:hover {
+  background: #c0392b;
+}
